@@ -9,9 +9,11 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "package": "com.eric.pokemon-battle-sim-expo",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.eric.pokemon-battle-sim-expo",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
