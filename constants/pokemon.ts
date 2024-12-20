@@ -1,8 +1,28 @@
-// @flow
-
 import { animatedSpriteList, staticSpriteList } from "./spritesList";
 import type { Type } from "./types";
 import { MOVES, type Move } from "./moves";
+import { StaticImageData } from "next/image";
+
+const colorVariants = {
+  Normal: "bg-Normal",
+  Fighting: "bg-Fighting",
+  Flying: "bg-Flying",
+  Poison: "bg-Poison",
+  Ground: "bg-Ground",
+  Rock: "bg-Rock",
+  Bug: "bg-Bug",
+  Ghost: "bg-Ghost",
+  Steel: "bg-Steel",
+  Water: "bg-Water",
+  Fire: "bg-Fire",
+  Grass: "bg-Grass",
+  Electric: "bg-Electric",
+  Psychic: "bg-Psychic",
+  Ice: "bg-Ice",
+  Dragon: "bg-Dragon",
+  Dark: "bg-Dark",
+  Fairy: "bg-Fairy",
+};
 
 type Stats = {
   atk: number;
@@ -15,19 +35,38 @@ type Stats = {
 
 export type Pokemon = {
   id: number;
-  staticSprite: string;
-  animatedSprite: string;
+  staticSprite: StaticImageData;
+  animatedSprite: StaticImageData;
   moves: Array<Move>;
   name: string;
   types: Array<Type>;
   stats: Stats;
 };
 
+export type POKEMON_LIST = {
+  BULBASAUR: Pokemon;
+  IVYSAUR: Pokemon;
+  VENUSAUR: Pokemon;
+  CHARMANDER: Pokemon;
+  CHARMELEON: Pokemon;
+  CHARIZARD: Pokemon;
+  SQUIRTLE: Pokemon;
+  WARTORTLE: Pokemon;
+  BLASTOISE: Pokemon;
+  NIDORINO: Pokemon;
+  GENGAR: Pokemon;
+  ARTICUNO: Pokemon;
+  ZAPDOS: Pokemon;
+  MOLTRES: Pokemon;
+  DRAGONITE: Pokemon;
+  MEWTWO: Pokemon;
+};
+
 export const BULBASAUR: Pokemon = {
   id: 1,
   staticSprite: staticSpriteList.sprite1,
   animatedSprite: animatedSpriteList.sprite1,
-  moves: [MOVES.PETAL_DANCE, MOVES.SLUDGE_BOMB],
+  moves: [MOVES.PETAL_DANCE, MOVES.SLUDGE_BOMB, MOVES.TACKLE, MOVES.SLAM],
   name: "Bulbasaur",
   types: ["Grass", "Poison"],
   stats: {
@@ -44,7 +83,7 @@ export const IVYSAUR: Pokemon = {
   id: 2,
   staticSprite: staticSpriteList.sprite2,
   animatedSprite: animatedSpriteList.sprite2,
-  moves: [MOVES.PETAL_DANCE, MOVES.SLUDGE_BOMB],
+  moves: [MOVES.PETAL_DANCE, MOVES.SLUDGE_BOMB, MOVES.TACKLE, MOVES.SLAM],
   name: "Ivysaur",
   types: ["Grass", "Poison"],
   stats: {
@@ -295,7 +334,7 @@ export const MEWTWO: Pokemon = {
   },
 };
 
-export const POKEMONS = {
+export const POKEMONS: POKEMON_LIST = {
   BULBASAUR,
   IVYSAUR,
   VENUSAUR,

@@ -1,6 +1,6 @@
 // @flow
 import { Pokemon, POKEMONS } from "../constants/pokemon";
-import calculateMaxHP from "./calculateMaxHP";
+import calculateMaxHP from "../lib/calculateMaxHP";
 
 export type RosterEntry = {
   pokemon: Pokemon;

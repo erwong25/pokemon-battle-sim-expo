@@ -1,5 +1,5 @@
 import React from "react";
-import type { CombatOutcome } from "./damageCalculations";
+import type { CombatOutcome } from "../lib/damageCalculations";
 
 export default function combatText(
   activePokemon: string,
