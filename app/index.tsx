@@ -5,9 +5,10 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Platform,
+  Pressable,
 } from "react-native";
 import { BULBASAUR, POKEMONS } from "@/constants/pokemon";
-import { router } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { staticSpriteList } from "@/constants/spritesList";
 import {
   GestureHandlerRootView,
@@ -23,6 +24,7 @@ import StandardButton from "@/components/StandardButton";
 export default function App() {
   const pokemonList = Object.keys(POKEMONS);
   const [roster, setRoster] = useState<Array<string>>([]);
+  const router = useRouter();
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView
@@ -47,7 +49,6 @@ export default function App() {
                 "height:",
                 animatedSprite.height
               );
-
               return (
                 <View
                   key={`${item}`}
@@ -84,10 +85,20 @@ export default function App() {
               );
             })}
           </View>
+          <Link
+            href={{
+              pathname: "/battle/[id]",
+              params: { id: roster.join(",") },
+            }}
+          >
+            <Pressable>
+              <Text>Start Battle</Text>
+            </Pressable>
+          </Link>
           <StandardButton
             title="Start Battle"
             handlePress={() => {
-              () => router.push("/about/" + roster.join(","));
+              () => router.push("/battle/" + roster.join(","));
             }}
           />
           {roster.length == 0 ? (
@@ -105,6 +116,7 @@ export default function App() {
                     style={{ width: 130, height: 84 }}
                     contentFit="contain"
                   />
+
                   <StandardButton
                     title={POKEMONS[item].name}
                     handlePress={() => {

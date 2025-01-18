@@ -1,7 +1,11 @@
-import calculateMaxHP from "@/app/lib/calculateMaxHP";
-import { RosterEntry } from "@/app/lib/generatePlayerRoster";
-import { POKEMON_LIST } from "@/app/lib/pokemon";
-import Image from "next/image";
+// import calculateMaxHP from "@/app/lib/calculateMaxHP";
+// import { RosterEntry } from "@/app/lib/generatePlayerRoster";
+// import { POKEMON_LIST } from "@/app/lib/pokemon";
+// import Image from "next/image";
+import calculateMaxHP from "@/lib/calculateMaxHP";
+import { RosterEntry } from "./generatePlayerRoster";
+import { POKEMON_LIST } from "@/constants/pokemon";
+import { Image } from "expo-image";
 
 export default function generatePartyButtons(
   playerRosterHP: Map<string, RosterEntry>,

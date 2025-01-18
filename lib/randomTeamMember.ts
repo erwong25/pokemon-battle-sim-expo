@@ -1,4 +1,4 @@
-import type { RosterEntry } from "./generatePlayerRoster";
+import type { RosterEntry } from "@/components/generatePlayerRoster";
 
 export default function randomTeamMember(
   roster: Map<string, RosterEntry>

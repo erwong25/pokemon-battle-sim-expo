@@ -1,27 +1,27 @@
 // @flow
 
-import type { Type } from "./types";
+import type { Type } from "@/constants/types";
 import type { Move } from "../constants/moves";
 import type { Pokemon } from "../constants/pokemon";
-import { TypeEffectiveness, TYPE_EFFECTIVENESS_MAP } from "./typeEffectiveness";
+import { TypeEffectiveness } from "@/constants/typeEffectiveness";
+import typeEffectivenessCalc from "@/constants/typeEffectiveness";
 
-export type CombatOutcome = "Miss" | "No effect" | number;
+export type CombatOutcome =
+  | "Miss"
+  | "No effect"
+  | "Fainted"
+  | "Switching"
+  | number;
 
 function computeTypeEffectiveness(
   moveType: Type,
   defenderType: Array<Type>
 ): number {
   if (defenderType.length == 1) {
-    return (
-      TYPE_EFFECTIVENESS_MAP.get(moveType)?.get(defenderType[0]) ??
-      TypeEffectiveness.DEFAULT
-    );
+    return typeEffectivenessCalc(moveType, defenderType[0]);
   } else if (defenderType.length == 2) {
-    const map = TYPE_EFFECTIVENESS_MAP.get(moveType);
-    const effectiveness1 =
-      map?.get(defenderType[0]) ?? TypeEffectiveness.DEFAULT;
-    const effectiveness2 =
-      map?.get(defenderType[1]) ?? TypeEffectiveness.DEFAULT;
+    const effectiveness1 = typeEffectivenessCalc(moveType, defenderType[0]);
+    const effectiveness2 = typeEffectivenessCalc(moveType, defenderType[1]);
     return effectiveness1 * effectiveness2;
   }
   return TypeEffectiveness.DEFAULT;

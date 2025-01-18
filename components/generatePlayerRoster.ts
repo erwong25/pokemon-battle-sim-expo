@@ -8,11 +8,11 @@ export type RosterEntry = {
 };
 
 export default function generatePlayerRoster(
-  roster: Array<string>
+  roster: Array<keyof POKEMON_LIST>
 ): Map<string, RosterEntry> {
   const playerRoster = new Map();
   for (let i = 0; i < roster.length; i++) {
-    playerRoster.set("pokemon" + (i + 1), {
+    playerRoster.set(POKEMONS[roster[i]].name, {
       pokemon: POKEMONS[roster[i]],
       currentHP: calculateMaxHP(POKEMONS[roster[i]]),
     });

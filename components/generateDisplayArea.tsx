@@ -1,6 +1,6 @@
-import type { Move } from "./moves";
-import type { Pokemon } from "./pokemon";
-import calculateMaxHP from "./calculateMaxHP";
+import type { Move } from "@/constants/moves";
+import type { Pokemon } from "@/constants/pokemon";
+import calculateMaxHP from "@/lib/calculateMaxHP";
 import { RosterEntry } from "./generatePlayerRoster";
 
 export type DisplayContent = {
