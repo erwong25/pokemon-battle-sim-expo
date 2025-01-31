@@ -343,8 +343,8 @@ export default function BattlePage({
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView className="bg-white h-full">
         <ScrollView>
-          <View className="flex bg-green-600 justify-center h-[600px]">
-            <View className="bg-orange-600 content-center">
+          <View className="flex flex-row bg-green-600 justify-center h-[600px]">
+            <View className="bg-orange-600 justify-center">
               <Text className="flex justify-start">
                 {activePlayerPokemon.name}
               </Text>
@@ -364,12 +364,13 @@ export default function BattlePage({
                 {theActivePlayerHP}/{calculateMaxHP(activePlayerPokemon)}
               </span>
             </View>
-            <View className="bg-white relative flex justify-center my-auto w-[550px] h-[400px]">
+            <View className="bg-white relative flex flex-row justify-center my-auto w-[550px] h-[400px]">
               <View className="bg-red-600 scale-x-[-2] scale-y-[2] m-auto">
                 <Image
                   priority={true}
                   className=""
-                  src={activePlayerPokemon.animatedSprite}
+                  style={{ width: 130, height: 84 }}
+                  source={activePlayerPokemon.animatedSprite}
                   alt=""
                 />
               </View>
@@ -378,7 +379,8 @@ export default function BattlePage({
                   <Image
                     priority={true}
                     className=""
-                    src={activeOpponentPokemon.animatedSprite}
+                    style={{ width: 130, height: 84 }}
+                    source={activeOpponentPokemon.animatedSprite}
                     alt=""
                     suppressHydrationWarning
                   />
@@ -388,7 +390,7 @@ export default function BattlePage({
             </View>
             {hydrated && (
               <View
-                className="bg-orange-600 content-center"
+                className="bg-orange-600 justify-center"
                 // suppressHydrationWarning
               >
                 <span className="flex justify-start">
@@ -423,7 +425,7 @@ export default function BattlePage({
               </Link>
             </button>
           </View>
-          <View className="flex bg-yellow-600 justify-center">
+          <View className="flex flex-row bg-yellow-600 justify-center">
             <View className="bg-pink-600 w-[650px] mr-1">
               <View className="absolute">Select Move:</View>
               {generateMoveButtons(
