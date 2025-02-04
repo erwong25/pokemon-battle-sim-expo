@@ -42,7 +42,11 @@ export default function generatePartyButtons(
             className="bg-blue-600 hover:bg-green-700 hover:shadow-xl transform hover:-translate-x-1 hover:-translate-y-1 hover:scale-[1.01] flex items-center h-28 rounded-md rounded-tl-3xl w-[300px]"
           >
             <div className="bg-white flex justify-center m-auto w-[100px]">
-              <Image src={partyPokemon.pokemon.staticSprite} alt="" />
+              <Image
+                source={partyPokemon.pokemon.staticSprite}
+                style={{ width: 130, height: 84 }}
+                alt=""
+              />
             </div>
             <div className="bg-green-600 content-center w-[180px] p-[20px]">
               <span className="flex justify-start">

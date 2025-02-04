@@ -3,6 +3,27 @@ import type { Pokemon } from "@/constants/pokemon";
 import calculateMaxHP from "@/lib/calculateMaxHP";
 import { RosterEntry } from "./generatePlayerRoster";
 
+const colorVariants = {
+  Normal: "bg-Normal",
+  Fighting: "bg-Fighting",
+  Flying: "bg-Flying",
+  Poison: "bg-Poison",
+  Ground: "bg-Ground",
+  Rock: "bg-Rock",
+  Bug: "bg-Bug",
+  Ghost: "bg-Ghost",
+  Steel: "bg-Steel",
+  Water: "bg-Water",
+  Fire: "bg-Fire",
+  Grass: "bg-Grass",
+  Electric: "bg-Electric",
+  Psychic: "bg-Psychic",
+  Ice: "bg-Ice",
+  Dragon: "bg-Dragon",
+  Dark: "bg-Dark",
+  Fairy: "bg-Fairy",
+};
+
 export type DisplayContent = {
   move?: Move;
   rosterEntry?: RosterEntry;
@@ -22,7 +43,7 @@ export default function generateDisplayArea(
           >
             {displayArea.move.type}
           </div>
-          <div className="bg-green-600 mx-4 text-white">
+          <div className="bg-gray-500 w-20 flex justify-center mx-4 text-white">
             {displayArea.move.damageCategory}
           </div>
         </div>
