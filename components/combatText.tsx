@@ -1,6 +1,7 @@
 import React from "react";
 import type { CombatOutcome } from "@/lib/damageCalculations";
 import { combatContent } from "./generateCombatText";
+import { Text, View } from "react-native";
 
 export default function combatText(
   combatContent: combatContent
@@ -8,45 +9,47 @@ export default function combatText(
   let faintText = null;
   if (combatContent.fainting == "player") {
     faintText = (
-      <p>{combatContent.defender.name} fainted. Send out your next pokemon. </p>
+      <Text>
+        {combatContent.defender.name} fainted. Send out your next pokemon.{" "}
+      </Text>
     );
   }
   if (combatContent.fainting == "opponent") {
     faintText = (
-      <p>
+      <Text>
         {combatContent.defender.name} fainted. Opponent switched to{" "}
         {combatContent.opponentFaintSwitch}.
-      </p>
+      </Text>
     );
   }
   if (combatContent.outcome === "Switching") {
-    return <p>Switching to {combatContent.attacker.name}.</p>;
+    return <Text>Switching to {combatContent.attacker.name}.</Text>;
   }
   if (combatContent.outcome === "Fainted") {
-    return <p>You sent out {combatContent.attacker.name}!</p>;
+    return <Text>You sent out {combatContent.attacker.name}!</Text>;
   }
   if (combatContent.outcome === "Miss") {
     return (
-      <p>
+      <Text>
         {combatContent.attacker.name} used {combatContent.move}...but it missed.
-      </p>
+      </Text>
     );
   } else if (combatContent.outcome === "No effect") {
     return (
-      <p>
+      <Text>
         {combatContent.attacker.name} used {combatContent.move}! It had no
         effect.
-      </p>
+      </Text>
     );
   } else {
     return (
-      <div>
-        <p>
+      <View>
+        <Text>
           {combatContent.attacker.name} used {combatContent.move}!{" "}
           {combatContent.defender.name} took {combatContent.outcome} damage.
-        </p>
+        </Text>
         {faintText}
-      </div>
+      </View>
     );
   }
 }

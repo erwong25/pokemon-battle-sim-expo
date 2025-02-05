@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, Text, View } from "react-native";
+import { Image, Pressable, SafeAreaView, Text, View } from "react-native";
 import {
   BULBASAUR,
   POKEMONS,
@@ -38,7 +38,7 @@ export default function BattlePage({
     Object.keys(POKEMONS).includes(pokemon)
   ) as Array<keyof POKEMON_LIST>;
   const startingPlayerPokemon = roster[0];
-  const clone = structuredClone(POKEMONS);
+  const clone = JSON.parse(JSON.stringify(POKEMONS));
   const randomRoster = [] as Array<keyof POKEMON_LIST>;
   for (let i = 0; i < roster.length; i++) {
     const randomPokemon = Object.keys(clone)[
@@ -360,9 +360,9 @@ export default function BattlePage({
                   className={`bg-green-600 h-2.5 rounded-full`}
                 ></View>
               </View>
-              <span className="flex justify-end">
+              <Text className="flex justify-end">
                 {theActivePlayerHP}/{calculateMaxHP(activePlayerPokemon)}
-              </span>
+              </Text>
             </View>
             <View className="bg-white relative flex flex-row justify-center my-auto w-[550px] h-[400px]">
               <View className="bg-red-600 scale-x-[-2] scale-y-[2] m-auto">
@@ -389,17 +389,11 @@ export default function BattlePage({
               {textOption}
             </View>
             {hydrated && (
-              <View
-                className="bg-orange-600 justify-center"
-                // suppressHydrationWarning
-              >
-                <span className="flex justify-start">
+              <View className="bg-orange-600 justify-center">
+                <Text className="flex justify-start">
                   {activeOpponentPokemon.name}
-                </span>
-                <View
-                  className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
-                  // suppressHydrationWarning
-                >
+                </Text>
+                <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                   <View
                     style={{
                       width: `${
@@ -411,30 +405,34 @@ export default function BattlePage({
                     className={`bg-green-600 h-2.5 rounded-full`}
                   ></View>
                 </View>
-                <span className="flex justify-end">
+                <Text className="flex justify-end">
                   {theActiveOpponentHP}/{calculateMaxHP(activeOpponentPokemon)}
-                </span>
+                </Text>
               </View>
             )}
-            <button className="flex justify-end">
+            <Pressable className="flex justify-end">
               <Link
                 className="bg-gray-300 hover:bg-gray-500 text-gray-800 px-1 border border-gray-400 rounded shadow"
                 href={"/"}
               >
-                Reset
+                <Text>Reset</Text>
               </Link>
-            </button>
+            </Pressable>
           </View>
           <View className="flex flex-row bg-yellow-600 justify-center">
             <View className="bg-pink-600 w-[650px] mr-1">
-              <View className="absolute">Select Move:</View>
+              <View className="absolute">
+                <Text>Select Move:</Text>
+              </View>
               {generateMoveButtons(
                 playerRoster.get(activePlayerRosterIdentifier),
                 (item: Move) => setDisplayArea({ move: item }),
                 (item) => handleMoveOnClick(item),
                 remainingOpponentPokemon
               )}
-              <View className="">Switch:</View>
+              <View className="">
+                <Text>Switch:</Text>
+              </View>
               {generatePartyButtons(
                 playerRoster,
                 (partyPokemon: RosterEntry) =>

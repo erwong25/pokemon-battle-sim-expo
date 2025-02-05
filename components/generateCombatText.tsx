@@ -1,6 +1,7 @@
 import combatText from "./combatText";
 import { CombatOutcome } from "@/lib/damageCalculations";
 import { Pokemon } from "@/constants/pokemon";
+import { View } from "react-native";
 
 export type combatContent = {
   attacker: Pokemon;
@@ -18,9 +19,9 @@ export default function generateCombatText(
   const combatInfo2 = combatInfo.get(2);
   // console.log(combatInfo);
   return (
-    <div className="bg-red-600 absolute text-black bottom-0 h-[4.5rem] w-[500px]">
+    <View className="bg-red-600 absolute text-black bottom-0 h-[4.5rem] w-[500px]">
       {combatInfo1 != undefined && combatText(combatInfo1)}
       {combatInfo2 != undefined && combatText(combatInfo2)}
-    </div>
+    </View>
   );
 }

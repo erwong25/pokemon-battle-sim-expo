@@ -2,6 +2,7 @@ import type { Move } from "@/constants/moves";
 import type { Pokemon } from "@/constants/pokemon";
 import calculateMaxHP from "@/lib/calculateMaxHP";
 import { RosterEntry } from "./generatePlayerRoster";
+import { View } from "react-native";
 
 const colorVariants = {
   Normal: "bg-Normal",
@@ -35,60 +36,60 @@ export default function generateDisplayArea(
   if (displayArea == null) return;
   if (displayArea.move != null) {
     return (
-      <div>
-        <div>{displayArea.move.name}</div>
-        <div className="flex">
-          <div
+      <View>
+        <View>{displayArea.move.name}</View>
+        <View className="flex">
+          <View
             className={`bg-${displayArea.move.type} w-20 flex justify-center text-white`}
           >
             {displayArea.move.type}
-          </div>
-          <div className="bg-gray-500 w-20 flex justify-center mx-4 text-white">
+          </View>
+          <View className="bg-gray-500 w-20 flex justify-center mx-4 text-white">
             {displayArea.move.damageCategory}
-          </div>
-        </div>
-        <div className="flex">
-          <div>Power: {displayArea.move.power}</div>
-          <div className="mx-4">
+          </View>
+        </View>
+        <View className="flex">
+          <View>Power: {displayArea.move.power}</View>
+          <View className="mx-4">
             Accuracy: {displayArea.move.accuracy * 100}%
-          </div>
-        </div>
-      </div>
+          </View>
+        </View>
+      </View>
     );
   } else if (displayArea.rosterEntry != null) {
     return (
-      <div>
-        <div>{displayArea.rosterEntry.pokemon.name}</div>
-        <div className="flex">
-          <div
+      <View>
+        <View>{displayArea.rosterEntry.pokemon.name}</View>
+        <View className="flex">
+          <View
             className={`bg-${displayArea.rosterEntry.pokemon.types[0]} w-20 flex justify-center text-white`}
           >
             {displayArea.rosterEntry.pokemon.types[0]}
-          </div>
-          <div
+          </View>
+          <View
             className={`bg-${displayArea.rosterEntry.pokemon.types[1]} w-20 mx-4 flex justify-center text-white`}
           >
             {displayArea.rosterEntry.pokemon.types[1]}
-          </div>
-        </div>
+          </View>
+        </View>
         <hr></hr>
-        <div>Stats:</div>
-        <div>
+        <View>Stats:</View>
+        <View>
           HP: {displayArea.rosterEntry.currentHP}/
           {calculateMaxHP(displayArea.rosterEntry.pokemon)}
-        </div>
-        <div>Attack: {displayArea.rosterEntry.pokemon.stats.atk}</div>
-        <div>Defense: {displayArea.rosterEntry.pokemon.stats.def}</div>
-        <div>Sp. Attack: {displayArea.rosterEntry.pokemon.stats.spAtk}</div>
-        <div>Sp. Defense: {displayArea.rosterEntry.pokemon.stats.spDef}</div>
-        <div>Speed: {displayArea.rosterEntry.pokemon.stats.sp}</div>
+        </View>
+        <View>Attack: {displayArea.rosterEntry.pokemon.stats.atk}</View>
+        <View>Defense: {displayArea.rosterEntry.pokemon.stats.def}</View>
+        <View>Sp. Attack: {displayArea.rosterEntry.pokemon.stats.spAtk}</View>
+        <View>Sp. Defense: {displayArea.rosterEntry.pokemon.stats.spDef}</View>
+        <View>Speed: {displayArea.rosterEntry.pokemon.stats.sp}</View>
         <hr></hr>
-        <div>Moves:</div>
-        <div>{displayArea.rosterEntry.pokemon.moves[0]?.name}</div>
-        <div>{displayArea.rosterEntry.pokemon.moves[1]?.name}</div>
-        <div>{displayArea.rosterEntry.pokemon.moves[2]?.name}</div>
-        <div>{displayArea.rosterEntry.pokemon.moves[3]?.name}</div>
-      </div>
+        <View>Moves:</View>
+        <View>{displayArea.rosterEntry.pokemon.moves[0]?.name}</View>
+        <View>{displayArea.rosterEntry.pokemon.moves[1]?.name}</View>
+        <View>{displayArea.rosterEntry.pokemon.moves[2]?.name}</View>
+        <View>{displayArea.rosterEntry.pokemon.moves[3]?.name}</View>
+      </View>
     );
   }
 }

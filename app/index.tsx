@@ -87,9 +87,11 @@ export default function App() {
           </View>
           <Link
             href={{
-              pathname: "/battle/[id]",
-              params: { id: roster.join(",") },
+              pathname: "/battle/",
+              // pathname: "/battle/[id]",
+              // params: { id: roster.join(",") },
             }}
+            className="bg-blue-600 w-[220px] h-[100px] flex justify-center"
           >
             <Pressable>
               <Text>Start Battle</Text>
@@ -98,7 +100,8 @@ export default function App() {
           <StandardButton
             title="Start Battle"
             handlePress={() => {
-              () => router.push("/battle/" + roster.join(","));
+              () => router.push("/battle/");
+              // () => router.push("/battle/" + roster.join(","));
             }}
           />
           {roster.length == 0 ? (
