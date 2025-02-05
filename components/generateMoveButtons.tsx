@@ -29,7 +29,7 @@ export default function generateMoveButtons(
             activePokemon.currentHP == 0 || remainingOpponentPokemon == 0
           }
           key={`${item.name}`}
-          className="bg-gray-300 hover:bg-gray-500 text-gray-800 py-2 w-[130px] border border-gray-400 rounded shadow mx-auto my-2 h-[2.6rem] disabled:bg-gray-600"
+          className="bg-gray-300 hover:bg-gray-500 flex items-center text-gray-800 py-2 w-[130px] border border-gray-400 rounded shadow mx-auto my-2 h-[2.6rem] disabled:bg-gray-600"
           onMouseOver={() => onMouseOver(item)}
           onClick={() => onClick(item)}
         >

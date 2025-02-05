@@ -38,36 +38,33 @@ export default function generatePartyButtons(
             key={`${item}`}
             onMouseOver={() => onMouseOver(partyPokemon)}
             onClick={() => onClick(item)}
-            className="bg-blue-600 hover:bg-green-700 hover:shadow-xl transform hover:-translate-x-1 hover:-translate-y-1 hover:scale-[1.01] flex items-center h-28 rounded-md rounded-tl-3xl w-[300px]"
+            className="bg-blue-600 hover:bg-green-700 hover:shadow-xl transform hover:-translate-x-1 hover:-translate-y-1 hover:scale-[1.01] flex flex-row h-28 rounded-md rounded-tl-3xl w-[300px]"
           >
-            <View>
-              <View className="bg-white flex justify-center m-auto w-[100px]">
-                <Image
-                  source={partyPokemon.pokemon.staticSprite}
-                  style={{ width: 130, height: 84 }}
-                  alt=""
-                />
+            <View className="bg-white flex items-center m-auto w-[100px]">
+              <Image
+                source={partyPokemon.pokemon.staticSprite}
+                style={{ width: 130, height: 84 }}
+                alt=""
+              />
+            </View>
+            <View className="bg-green-600 flex justify-center w-[180px] p-[20px]">
+              <Text className="flex justify-start">
+                {partyPokemon.pokemon.name}
+              </Text>
+              <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <View
+                  style={{
+                    width: `${
+                      (partyPokemonHP / calculateMaxHP(partyPokemon.pokemon)) *
+                      100
+                    }%`,
+                  }}
+                  className={`bg-orange-600 h-2.5 rounded-full`}
+                ></View>
               </View>
-              <View className="bg-green-600 content-center w-[180px] p-[20px]">
-                <Text className="flex justify-start">
-                  {partyPokemon.pokemon.name}
-                </Text>
-                <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                  <View
-                    style={{
-                      width: `${
-                        (partyPokemonHP /
-                          calculateMaxHP(partyPokemon.pokemon)) *
-                        100
-                      }%`,
-                    }}
-                    className={`bg-orange-600 h-2.5 rounded-full`}
-                  ></View>
-                </View>
-                <Text className="flex justify-end">
-                  {partyPokemonHP}/{calculateMaxHP(partyPokemon.pokemon)}
-                </Text>
-              </View>
+              <Text className="flex justify-end">
+                {partyPokemonHP}/{calculateMaxHP(partyPokemon.pokemon)}
+              </Text>
             </View>
           </Pressable>
         );
