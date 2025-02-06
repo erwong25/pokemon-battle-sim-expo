@@ -1,6 +1,7 @@
-import { Image, Pressable, SafeAreaView, Text, View } from "react-native";
+import { Pressable, SafeAreaView, Text, View, Platform } from "react-native";
 import {
   BULBASAUR,
+  GENGAR,
   POKEMONS,
   POKEMON_LIST,
   Pokemon,
@@ -22,6 +23,8 @@ import generateMoveButtons from "@/components/generateMoveButtons";
 import generatePartyButtons from "@/components/generatePartyButtons";
 import generateDisplayArea from "@/components/generateDisplayArea";
 import { Link } from "expo-router";
+import { Image } from "expo-image";
+import { Image as ReactImage } from "react-native";
 import {
   GestureHandlerRootView,
   ScrollView,
@@ -343,7 +346,12 @@ export default function BattlePage({
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView className="bg-white h-full">
         <ScrollView>
-          <View className="flex flex-row bg-green-600 justify-center h-[600px]">
+          {(Platform.OS === "ios" || Platform.OS === "android") && (
+            <View className="bg-gray-200 ml-1 my-2 w-[650px] rounded-xl py-4 px-6">
+              {generateDisplayArea(displayArea)}
+            </View>
+          )}
+          <View className="flex flex-row bg-green-600 justify-center h-[500px]">
             <View className="bg-orange-600 justify-center">
               <Text className="flex justify-start">
                 {activePlayerPokemon.name}
@@ -366,24 +374,69 @@ export default function BattlePage({
             </View>
             <View className="bg-white relative flex flex-row justify-center my-auto w-[550px] h-[400px]">
               <View className="bg-red-600 scale-x-[-2] scale-y-[2] m-auto">
-                <Image
-                  priority={true}
-                  className=""
-                  style={{ width: 130, height: 84 }}
-                  source={activePlayerPokemon.animatedSprite}
-                  alt=""
-                />
+                {Platform.OS === "web" && (
+                  <Image
+                    className=""
+                    style={{
+                      width: activePlayerPokemon.animatedSprite.width,
+                      height: activePlayerPokemon.animatedSprite.height,
+                      padding: 10,
+                    }}
+                    source={activePlayerPokemon.animatedSprite}
+                    contentFit="contain"
+                  />
+                )}
+                {(Platform.OS === "ios" || Platform.OS === "android") && (
+                  <Image
+                    className=""
+                    style={{
+                      width:
+                        ReactImage.resolveAssetSource(
+                          activePlayerPokemon.animatedSprite
+                        ).width * 0.7,
+                      height:
+                        ReactImage.resolveAssetSource(
+                          activePlayerPokemon.animatedSprite
+                        ).height * 0.7,
+                      padding: 10,
+                    }}
+                    source={activePlayerPokemon.animatedSprite}
+                    contentFit="contain"
+                  />
+                )}
               </View>
               {hydrated && (
                 <View className="bg-blue-600 m-auto scale-[2]">
-                  <Image
-                    priority={true}
-                    className=""
-                    style={{ width: 130, height: 84 }}
-                    source={activeOpponentPokemon.animatedSprite}
-                    alt=""
-                    suppressHydrationWarning
-                  />
+                  {Platform.OS === "web" && (
+                    <Image
+                      className=""
+                      style={{
+                        width: activeOpponentPokemon.animatedSprite.width,
+                        height: activeOpponentPokemon.animatedSprite.height,
+                        padding: 10,
+                      }}
+                      source={activeOpponentPokemon.animatedSprite}
+                      contentFit="contain"
+                    />
+                  )}
+                  {(Platform.OS === "ios" || Platform.OS === "android") && (
+                    <Image
+                      className=""
+                      style={{
+                        width:
+                          ReactImage.resolveAssetSource(
+                            activeOpponentPokemon.animatedSprite
+                          ).width * 0.7,
+                        height:
+                          ReactImage.resolveAssetSource(
+                            activeOpponentPokemon.animatedSprite
+                          ).height * 0.7,
+                        padding: 10,
+                      }}
+                      source={activeOpponentPokemon.animatedSprite}
+                      contentFit="contain"
+                    />
+                  )}
                 </View>
               )}
               {textOption}
@@ -421,9 +474,7 @@ export default function BattlePage({
           </View>
           <View className="flex flex-row bg-yellow-600 justify-center">
             <View className="bg-pink-600 w-[650px] mr-1">
-              <View className="absolute">
-                <Text>Select Move:</Text>
-              </View>
+              <Text className="absolute">Select Move:</Text>
               {generateMoveButtons(
                 playerRoster.get(activePlayerRosterIdentifier),
                 (item: Move) => setDisplayArea({ move: item }),
@@ -440,9 +491,11 @@ export default function BattlePage({
                 (item) => handlePartyOnClick(item)
               )}
             </View>
-            <View className="bg-gray-200 ml-1 my-2 w-[650px] rounded-xl py-4 px-6">
-              {generateDisplayArea(displayArea)}
-            </View>
+            {Platform.OS === "web" && (
+              <View className="bg-gray-200 ml-1 my-2 w-[650px] rounded-xl py-4 px-6">
+                {generateDisplayArea(displayArea)}
+              </View>
+            )}
           </View>
         </ScrollView>
       </SafeAreaView>

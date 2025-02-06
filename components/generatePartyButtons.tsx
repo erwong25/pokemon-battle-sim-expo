@@ -37,7 +37,7 @@ export default function generatePartyButtons(
           <Pressable
             key={`${item}`}
             onMouseOver={() => onMouseOver(partyPokemon)}
-            onClick={() => onClick(item)}
+            onPress={() => onClick(item)}
             className="bg-blue-600 hover:bg-green-700 hover:shadow-xl transform hover:-translate-x-1 hover:-translate-y-1 hover:scale-[1.01] flex flex-row h-28 rounded-md rounded-tl-3xl w-[300px]"
           >
             <View className="bg-white flex items-center m-auto w-[100px]">
