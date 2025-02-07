@@ -14,13 +14,13 @@ function PartyButton({
   onClick,
   partyPokemon,
   partyPokemonHP,
-}): {
+}: {
   pokemon: string;
   onMouseOver: (partyPokemon: RosterEntry) => void;
   onClick: (item: string) => void;
   partyPokemon: RosterEntry;
   partyPokemonHP: number;
-} {
+}) {
   return (
     <Pressable
       key={`${pokemon}`}
