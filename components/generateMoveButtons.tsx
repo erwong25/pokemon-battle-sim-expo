@@ -4,7 +4,7 @@ import { RosterEntry } from "./generatePlayerRoster";
 import { Platform, Pressable, Text, View } from "react-native";
 import isMobile from "@/lib/platformUtils";
 
-function MoveButton({
+const MoveButton = ({
   activePokemon,
   onMouseOver,
   onClick,
@@ -16,7 +16,7 @@ function MoveButton({
   onClick: (item: Move) => void;
   remainingOpponentPokemon: number;
   move: Move;
-}) {
+}) => {
   return (
     <Pressable
       disabled={activePokemon.currentHP == 0 || remainingOpponentPokemon == 0}
@@ -29,7 +29,7 @@ function MoveButton({
       <Text>{move.name}</Text>
     </Pressable>
   );
-}
+};
 
 export default function generateMoveButtons(
   activePokemon: RosterEntry | undefined,

@@ -22,6 +22,7 @@ import generateVictoryText from "@/components/generateVictoryText";
 import generateMoveButtons from "@/components/generateMoveButtons";
 import generatePartyButtons from "@/components/generatePartyButtons";
 import generateDisplayArea from "@/components/generateDisplayArea";
+import MainWindow from "@/components/ui/MainWindow";
 import { Link } from "expo-router";
 import { Image } from "expo-image";
 import { Image as ReactImage } from "react-native";
@@ -336,8 +337,6 @@ export default function BattlePage({
     }
   }
 
-  // combatText or victoryText variable
-
   let textOption = generateCombatText(combatInfo);
   if (remainingPlayerPokemon == 0 || remainingOpponentPokemon == 0) {
     textOption = generateVictoryText(theActivePlayerHP);
@@ -347,11 +346,6 @@ export default function BattlePage({
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView className="bg-white h-full">
         <ScrollView>
-          {(Platform.OS === "ios" || Platform.OS === "android") && (
-            <View className="bg-gray-200 ml-1 my-2 w-[650px] rounded-xl py-4 px-6">
-              {generateDisplayArea(displayArea)}
-            </View>
-          )}
           <View className="flex flex-row bg-green-600 justify-center h-[500px]">
             <View className="bg-orange-600 justify-center">
               <Text className="flex justify-start">
@@ -373,146 +367,11 @@ export default function BattlePage({
                 {theActivePlayerHP}/{calculateMaxHP(activePlayerPokemon)}
               </Text>
             </View>
-            {Platform.OS === "web" && (
-              <View className="bg-white relative flex flex-row justify-center my-auto w-[550px] h-[400px]">
-                <View className="bg-red-600 scale-x-[-2] scale-y-[2] m-auto">
-                  <Image
-                    className=""
-                    style={{
-                      width: activePlayerPokemon.animatedSprite.width,
-                      height: activePlayerPokemon.animatedSprite.height,
-                      padding: 10,
-                    }}
-                    source={activePlayerPokemon.animatedSprite}
-                    contentFit="contain"
-                  />
-                </View>
-                <View className="bg-blue-600 m-auto scale-[2]">
-                  <Image
-                    className=""
-                    style={{
-                      width: activeOpponentPokemon.animatedSprite.width,
-                      height: activeOpponentPokemon.animatedSprite.height,
-                      padding: 10,
-                    }}
-                    source={activeOpponentPokemon.animatedSprite}
-                    contentFit="contain"
-                  />
-                </View>
-                {textOption}
-              </View>
-            )}
-            {isMobile() && (
-              <View className="bg-white relative flex flex-row justify-center my-auto w-[550px] h-[400px]">
-                <View className="bg-red-600 scale-x-[-2] scale-y-[2] m-auto">
-                  <Image
-                    className=""
-                    style={{
-                      width:
-                        ReactImage.resolveAssetSource(
-                          activePlayerPokemon.animatedSprite
-                        ).width * 0.7,
-                      height:
-                        ReactImage.resolveAssetSource(
-                          activePlayerPokemon.animatedSprite
-                        ).height * 0.7,
-                      padding: 10,
-                    }}
-                    source={activePlayerPokemon.animatedSprite}
-                    contentFit="contain"
-                  />
-                </View>
-                <View className="bg-blue-600 m-auto scale-[2]">
-                  <Image
-                    className=""
-                    style={{
-                      width:
-                        ReactImage.resolveAssetSource(
-                          activeOpponentPokemon.animatedSprite
-                        ).width * 0.7,
-                      height:
-                        ReactImage.resolveAssetSource(
-                          activeOpponentPokemon.animatedSprite
-                        ).height * 0.7,
-                      padding: 10,
-                    }}
-                    source={activeOpponentPokemon.animatedSprite}
-                    contentFit="contain"
-                  />
-                </View>
-                {textOption}
-              </View>
-            )}
-
-            {/* <View className="bg-white relative flex flex-row justify-center my-auto w-[550px] h-[400px]">
-              <View className="bg-red-600 scale-x-[-2] scale-y-[2] m-auto">
-                {Platform.OS === "web" && (
-                  <Image
-                    className=""
-                    style={{
-                      width: activePlayerPokemon.animatedSprite.width,
-                      height: activePlayerPokemon.animatedSprite.height,
-                      padding: 10,
-                    }}
-                    source={activePlayerPokemon.animatedSprite}
-                    contentFit="contain"
-                  />
-                )}
-                {(Platform.OS === "ios" || Platform.OS === "android") && (
-                  <Image
-                    className=""
-                    style={{
-                      width:
-                        ReactImage.resolveAssetSource(
-                          activePlayerPokemon.animatedSprite
-                        ).width * 0.7,
-                      height:
-                        ReactImage.resolveAssetSource(
-                          activePlayerPokemon.animatedSprite
-                        ).height * 0.7,
-                      padding: 10,
-                    }}
-                    source={activePlayerPokemon.animatedSprite}
-                    contentFit="contain"
-                  />
-                )}
-              </View>
-              {hydrated && (
-                <View className="bg-blue-600 m-auto scale-[2]">
-                  {Platform.OS === "web" && (
-                    <Image
-                      className=""
-                      style={{
-                        width: activeOpponentPokemon.animatedSprite.width,
-                        height: activeOpponentPokemon.animatedSprite.height,
-                        padding: 10,
-                      }}
-                      source={activeOpponentPokemon.animatedSprite}
-                      contentFit="contain"
-                    />
-                  )}
-                  {(Platform.OS === "ios" || Platform.OS === "android") && (
-                    <Image
-                      className=""
-                      style={{
-                        width:
-                          ReactImage.resolveAssetSource(
-                            activeOpponentPokemon.animatedSprite
-                          ).width * 0.7,
-                        height:
-                          ReactImage.resolveAssetSource(
-                            activeOpponentPokemon.animatedSprite
-                          ).height * 0.7,
-                        padding: 10,
-                      }}
-                      source={activeOpponentPokemon.animatedSprite}
-                      contentFit="contain"
-                    />
-                  )}
-                </View>
-              )}
-              {textOption}
-            </View> */}
+            <MainWindow
+              activePlayerPokemon={activePlayerPokemon}
+              activeOpponentPokemon={activeOpponentPokemon}
+              textOption={textOption}
+            />
             {hydrated && (
               <View className="bg-orange-600 justify-center">
                 <Text className="flex justify-start">
