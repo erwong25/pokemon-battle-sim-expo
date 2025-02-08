@@ -17,20 +17,17 @@ import computeDamage from "@/lib/damageCalculations";
 import randomTeamMember from "@/lib/randomTeamMember";
 import moveSelector from "@/lib/moveSelector";
 import generateCombatText from "@/components/generateCombatText";
-import calculateMaxHP from "@/lib/calculateMaxHP";
 import generateVictoryText from "@/components/generateVictoryText";
-import generateMoveButtons from "@/components/generateMoveButtons";
-import generatePartyButtons from "@/components/generatePartyButtons";
+import generatePartyButtons from "@/components/PartyButton";
 import generateDisplayArea from "@/components/generateDisplayArea";
 import MainWindow from "@/components/ui/MainWindow";
 import { Link } from "expo-router";
-import { Image } from "expo-image";
-import { Image as ReactImage } from "react-native";
 import {
   GestureHandlerRootView,
   ScrollView,
 } from "react-native-gesture-handler";
-import isMobile from "@/lib/platformUtils";
+import MoveButtonSection from "@/components/MoveButtonSection";
+import PartyButtonSection from "@/components/ui/PartyButtonSection";
 
 export default function BattlePage({
   searchParams,
@@ -346,55 +343,8 @@ export default function BattlePage({
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView className="bg-white h-full">
         <ScrollView>
-          <View className="flex flex-row bg-green-600 justify-center h-[500px]">
-            <View className="bg-orange-600 justify-center">
-              <Text className="flex justify-start">
-                {activePlayerPokemon.name}
-              </Text>
-              <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                <View
-                  style={{
-                    width: `${
-                      (theActivePlayerHP /
-                        calculateMaxHP(activePlayerPokemon)) *
-                      100
-                    }%`,
-                  }}
-                  className={`bg-green-600 h-2.5 rounded-full`}
-                ></View>
-              </View>
-              <Text className="flex justify-end">
-                {theActivePlayerHP}/{calculateMaxHP(activePlayerPokemon)}
-              </Text>
-            </View>
-            <MainWindow
-              activePlayerPokemon={activePlayerPokemon}
-              activeOpponentPokemon={activeOpponentPokemon}
-              textOption={textOption}
-            />
-            {hydrated && (
-              <View className="bg-orange-600 justify-center">
-                <Text className="flex justify-start">
-                  {activeOpponentPokemon.name}
-                </Text>
-                <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                  <View
-                    style={{
-                      width: `${
-                        (theActiveOpponentHP /
-                          calculateMaxHP(activeOpponentPokemon)) *
-                        100
-                      }%`,
-                    }}
-                    className={`bg-green-600 h-2.5 rounded-full`}
-                  ></View>
-                </View>
-                <Text className="flex justify-end">
-                  {theActiveOpponentHP}/{calculateMaxHP(activeOpponentPokemon)}
-                </Text>
-              </View>
-            )}
-            <Pressable className="flex justify-end">
+          <View className="flex flex-row bg-green-600 justify-center h-[450px]">
+            <Pressable className="flex justify-end absolute right-0">
               <Link
                 className="bg-gray-300 hover:bg-gray-500 text-gray-800 px-1 border border-gray-400 rounded shadow"
                 href={"/"}
@@ -402,25 +352,33 @@ export default function BattlePage({
                 <Text>Reset</Text>
               </Link>
             </Pressable>
+            <MainWindow
+              theActivePlayerHP={theActivePlayerHP}
+              theActiveOpponentHP={theActiveOpponentHP}
+              activePlayerPokemon={activePlayerPokemon}
+              activeOpponentPokemon={activeOpponentPokemon}
+              textOption={textOption}
+            />
           </View>
           <View className="flex flex-row bg-yellow-600 justify-center">
             <View className="bg-pink-600 w-[650px] mr-1">
               <Text className="absolute">Select Move:</Text>
-              {generateMoveButtons(
-                playerRoster.get(activePlayerRosterIdentifier),
-                (item: Move) => setDisplayArea({ move: item }),
-                (item) => handleMoveOnClick(item),
-                remainingOpponentPokemon
-              )}
+              <MoveButtonSection
+                activePokemon={playerRoster.get(activePlayerRosterIdentifier)}
+                onMouseOver={(item: Move) => setDisplayArea({ move: item })}
+                onClick={(item) => handleMoveOnClick(item)}
+                remainingOpponentPokemon={remainingOpponentPokemon}
+              />
               <View className="">
                 <Text>Switch:</Text>
               </View>
-              {generatePartyButtons(
-                playerRoster,
-                (partyPokemon: RosterEntry) =>
-                  setDisplayArea({ rosterEntry: partyPokemon }),
-                (item) => handlePartyOnClick(item)
-              )}
+              <PartyButtonSection
+                playerRosterHP={playerRoster}
+                onMouseOver={(partyPokemon: RosterEntry) =>
+                  setDisplayArea({ rosterEntry: partyPokemon })
+                }
+                onClick={(item) => handlePartyOnClick(item)}
+              />
             </View>
             {Platform.OS === "web" && (
               <View className="bg-gray-200 ml-1 my-2 w-[650px] rounded-xl py-4 px-6">
