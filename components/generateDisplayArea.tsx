@@ -1,5 +1,4 @@
 import type { Move } from "@/constants/moves";
-import type { Pokemon } from "@/constants/pokemon";
 import calculateMaxHP from "@/lib/calculateMaxHP";
 import { RosterEntry } from "./generatePlayerRoster";
 import { Text, View } from "react-native";

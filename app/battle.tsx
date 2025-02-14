@@ -18,16 +18,15 @@ import randomTeamMember from "@/lib/randomTeamMember";
 import moveSelector from "@/lib/moveSelector";
 import generateCombatText from "@/components/generateCombatText";
 import generateVictoryText from "@/components/generateVictoryText";
-import generatePartyButtons from "@/components/PartyButton";
 import generateDisplayArea from "@/components/generateDisplayArea";
-import MainWindow from "@/components/ui/MainWindow";
+import MainWindow from "@/components/MainWindow";
 import { Link } from "expo-router";
 import {
   GestureHandlerRootView,
   ScrollView,
 } from "react-native-gesture-handler";
 import MoveButtonSection from "@/components/MoveButtonSection";
-import PartyButtonSection from "@/components/ui/PartyButtonSection";
+import PartyButtonSection from "@/components/PartyButtonSection";
 
 export default function BattlePage({
   searchParams,

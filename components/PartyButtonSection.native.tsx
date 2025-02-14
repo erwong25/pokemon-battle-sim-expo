@@ -1,6 +1,6 @@
-import { RosterEntry } from "../generatePlayerRoster";
+import { RosterEntry } from "./generatePlayerRoster";
 import { View } from "react-native";
-import PartyButton from "../PartyButton";
+import PartyButton from "./PartyButton";
 
 const PartyButtonSection = ({
   playerRosterHP,
@@ -16,12 +16,12 @@ const PartyButtonSection = ({
     placeholderParty.push(
       <View
         key={`placeholderParty${i}`}
-        className="bg-gray-600 flex h-28 rounded-md rounded-tl-3xl w-[300px]"
+        className="bg-gray-600 flex h-28 rounded-md rounded-tl-3xl w-[180px]"
       ></View>
     );
   }
   return (
-    <View className="bg-red-600 w-fit flex grid grid-cols-2 gap-4 p-4 pt-0 mx-auto">
+    <View className="bg-orange-600 w-[400px] flex flex-row flex-wrap justify-center my-2 mx-auto">
       {Array.from(playerRosterHP.keys()).map((item) => {
         const partyPokemon = playerRosterHP.get(item);
         if (partyPokemon == null) {

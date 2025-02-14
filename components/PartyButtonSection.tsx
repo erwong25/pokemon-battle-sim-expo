@@ -1,6 +1,6 @@
-import { RosterEntry } from "../generatePlayerRoster";
+import { RosterEntry } from "./generatePlayerRoster";
 import { View } from "react-native";
-import PartyButton from "../PartyButton";
+import PartyButton from "./PartyButton";
 
 const PartyButtonSection = ({
   playerRosterHP,
