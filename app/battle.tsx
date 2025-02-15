@@ -342,7 +342,7 @@ export default function BattlePage({
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView className="bg-white h-full">
         <ScrollView>
-          <View className="flex flex-row bg-green-600 justify-center h-[450px]">
+          <View className="flex flex-row bg-green-600 justify-center h-auto">
             <Pressable className="flex justify-end absolute right-0">
               <Link
                 className="bg-gray-300 hover:bg-gray-500 text-gray-800 px-1 border border-gray-400 rounded shadow"

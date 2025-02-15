@@ -22,18 +22,18 @@ const PartyButton = ({
       onHoverIn={() => onMouseOver(partyPokemon)}
       onPress={() => onClick(pokemon)}
       // onLongPress= {() => { if(!isMobile()) {return}} onLongPress(pokemon)}
-      className="bg-blue-600 hover:bg-green-700 hover:shadow-xl transform hover:-translate-x-1 hover:-translate-y-1 hover:scale-[1.01] flex flex-row h-28 rounded-md rounded-tl-3xl w-[180px]"
+      className="bg-blue-600 hover:bg-green-700 hover:shadow-xl transform hover:-translate-x-1 hover:-translate-y-1 hover:scale-[1.01] flex flex-row h-28 rounded-md rounded-tl-3xl w-[180px] mx-auto my-1"
     >
-      <View className="bg-white flex items-center m-auto w-[100px]">
+      <View className="bg-white flex items-center m-auto w-[50px]">
         <Image
           source={partyPokemon.pokemon.staticSprite}
-          style={{ width: 130, height: 84 }}
+          style={{ width: 130, height: 84, maxHeight: 70, maxWidth: 70 }}
           alt=""
         />
       </View>
-      <View className="bg-green-600 flex justify-center w-[100px] p-[20px]">
+      <View className="bg-green-600 flex justify-center w-[100px] pr-2">
         <Text className="flex justify-start">{partyPokemon.pokemon.name}</Text>
-        <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+        <View className="w-[90px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
           <View
             style={{
               width: `${
@@ -43,9 +43,11 @@ const PartyButton = ({
             className={`bg-orange-600 h-2.5 rounded-full`}
           ></View>
         </View>
-        <Text className="flex justify-end">
-          {partyPokemonHP}/{calculateMaxHP(partyPokemon.pokemon)}
-        </Text>
+        <View className="flex flex-row justify-end w-[90px]">
+          <Text>
+            {partyPokemonHP}/{calculateMaxHP(partyPokemon.pokemon)}
+          </Text>
+        </View>
       </View>
     </Pressable>
   );

@@ -20,43 +20,49 @@ const MainWindow = ({
 }) => {
   if (isMobile()) {
     return (
-      <View className="bg-white relative flex flex-row justify-center my-auto w-[300px] h-[300px]">
-        <View className="bg-orange-600 flex flex-row justify-center absolute left-2 top-10">
-          <Text className="flex justify-start">{activePlayerPokemon.name}</Text>
-          <Text className="flex justify-end">
-            {theActivePlayerHP}/{calculateMaxHP(activePlayerPokemon)}
-          </Text>
-          <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-            <View
-              style={{
-                width: `${
-                  (theActivePlayerHP / calculateMaxHP(activePlayerPokemon)) *
-                  100
-                }%`,
-              }}
-              className={`bg-green-600 h-2.5 rounded-full`}
-            ></View>
+      <View className="bg-white relative flex flex-row justify-center w-[300px] h-[300px]">
+        <View className="bg-orange-600 flex justify-center absolute left-2 top-10">
+          <View className="flex flex-row w-[140px]">
+            <Text className="flex">{activePlayerPokemon.name}</Text>
+            <Text className="flex ml-auto">
+              {theActivePlayerHP}/{calculateMaxHP(activePlayerPokemon)}
+            </Text>
+          </View>
+          <View>
+            <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+              <View
+                style={{
+                  width: `${
+                    (theActivePlayerHP / calculateMaxHP(activePlayerPokemon)) *
+                    100
+                  }%`,
+                }}
+                className={`bg-green-600 h-2.5 rounded-full`}
+              ></View>
+            </View>
           </View>
         </View>
         <View className="bg-orange-600 justify-center absolute right-2 top-10">
-          <Text className="flex justify-start">
-            {activeOpponentPokemon.name}
-          </Text>
-          <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-            <View
-              style={{
-                width: `${
-                  (theActiveOpponentHP /
-                    calculateMaxHP(activeOpponentPokemon)) *
-                  100
-                }%`,
-              }}
-              className={`bg-green-600 h-2.5 rounded-full`}
-            ></View>
+          <View className="flex flex-row w-[140px]">
+            <Text className="flex">{activeOpponentPokemon.name}</Text>
+            <Text className="flex ml-auto">
+              {theActiveOpponentHP}/{calculateMaxHP(activeOpponentPokemon)}
+            </Text>
           </View>
-          <Text className="flex justify-end">
-            {theActiveOpponentHP}/{calculateMaxHP(activeOpponentPokemon)}
-          </Text>
+          <View>
+            <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+              <View
+                style={{
+                  width: `${
+                    (theActiveOpponentHP /
+                      calculateMaxHP(activeOpponentPokemon)) *
+                    100
+                  }%`,
+                }}
+                className={`bg-green-600 h-2.5 rounded-full`}
+              ></View>
+            </View>
+          </View>
         </View>
         <View className="bg-red-600 scale-x-[-2] scale-y-[2] m-auto">
           <Image
