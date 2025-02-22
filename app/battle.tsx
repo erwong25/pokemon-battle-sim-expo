@@ -351,6 +351,15 @@ export default function BattlePage({
                 <Text>Reset</Text>
               </Link>
             </Pressable>
+            <Pressable className="flex justify-end absolute left-0">
+              <Link
+                className="bg-gray-300 hover:bg-gray-500 text-gray-800 px-1 border border-gray-400 rounded shadow"
+                href={"/infoPage"}
+                // playerRosterHP={playerRoster}
+              >
+                <Text>Info</Text>
+              </Link>
+            </Pressable>
             <MainWindow
               theActivePlayerHP={theActivePlayerHP}
               theActiveOpponentHP={theActiveOpponentHP}
