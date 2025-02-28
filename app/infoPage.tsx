@@ -1,6 +1,7 @@
 import { View, Text, Pressable, SafeAreaView } from "react-native";
 import React, { useState } from "react";
 import { Link, router } from "expo-router";
+import { Image } from "expo-image";
 import {
   GestureHandlerRootView,
   ScrollView,
@@ -8,11 +9,11 @@ import {
 import MoveButtonSection from "@/components/MoveButtonSection";
 import PartyButtonSection from "@/components/PartyButtonSection";
 import generatePlayerRoster from "@/components/generatePlayerRoster";
-import { POKEMONS, POKEMON_LIST } from "@/constants/pokemon";
+import { MEWTWO, POKEMONS, POKEMON_LIST } from "@/constants/pokemon";
 import { RosterEntry } from "@/components/generatePlayerRoster";
 import { Move } from "@/constants/moves";
 import { DisplayContent } from "@/components/generateDisplayArea";
-import StandardButton from "@/components/StandardButton";
+import calculateMaxHP from "@/lib/calculateMaxHP";
 
 const infoPage = () => {
   const rawRoster = ["BULBASAUR", "IVYSAUR"];
@@ -22,11 +23,21 @@ const infoPage = () => {
   const playerRoster = generatePlayerRoster(roster);
   const [activePlayerRosterIdentifier, setActivePlayerRosterIdentifier] =
     useState(POKEMONS[roster[0]].name);
+  // const [displayType, setDisplayType] = useState('Party')
   const [displayArea, setDisplayArea] = useState<DisplayContent | null>(null);
 
-  function handleMoveOnClick(selectedMove: Move) {}
+  const activePlayerPokemon = playerRoster.get(
+    activePlayerRosterIdentifier
+  )?.pokemon;
 
-  function handlePartyOnClick(item: string) {}
+  function handleMoveOnClick(selectedMove: Move) {
+    // setDisplayType('Move')
+  }
+
+  function handlePartyOnClick(item: string) {
+    // setDisplayType('Party')
+    setActivePlayerRosterIdentifier(item);
+  }
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView className="bg-white h-full">
@@ -36,7 +47,38 @@ const infoPage = () => {
               <Text className="text-white">Back</Text>
             </Pressable>
           </View>
-          <View className="flex flex-row bg-green-600 justify-center h-[300px]"></View>
+          <View className="flex flex-row bg-green-600 justify-center h-[300px] w-screen">
+            <View className="flex-1 bg-red-600 w-fit h-fit m-2">
+              <Image
+                source={activePlayerPokemon?.staticSprite}
+                style={{ width: 130, height: 84 }}
+                alt=""
+              />
+              <Text>{activePlayerPokemon?.name}</Text>
+              <View className="flex flex-row">
+                <Text
+                  className={`bg-${activePlayerPokemon?.types[0]} w-20 flex justify-center text-white`}
+                >
+                  {activePlayerPokemon?.types[0]}
+                </Text>
+                <Text
+                  className={`bg-${activePlayerPokemon?.types[1]} w-20 mx-4 flex justify-center text-white`}
+                >
+                  {activePlayerPokemon?.types[1]}
+                </Text>
+              </View>
+              <Text>Stats:</Text>
+              <Text>HP: {calculateMaxHP(activePlayerPokemon)}</Text>
+              <Text>Attack: {activePlayerPokemon?.stats.atk}</Text>
+              <Text>Defense: {activePlayerPokemon?.stats.def}</Text>
+              <Text>Sp. Attack: {activePlayerPokemon?.stats.spAtk}</Text>
+              <Text>Sp. Defense: {activePlayerPokemon?.stats.spDef}</Text>
+              <Text>Speed: {activePlayerPokemon?.stats.sp}</Text>
+            </View>
+            <View className="flex-1 bg-blue-600 w-fit h-fit m-2">
+              <Text>Hi</Text>
+            </View>
+          </View>
           <View className="flex flex-row bg-yellow-600 justify-center">
             <View className="bg-pink-600 w-[650px] mr-1">
               <Text className="absolute">Select Move:</Text>
