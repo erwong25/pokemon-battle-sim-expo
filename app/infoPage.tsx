@@ -24,6 +24,7 @@ const infoPage = () => {
   const [activePlayerRosterIdentifier, setActivePlayerRosterIdentifier] =
     useState(POKEMONS[roster[0]].name);
   // const [displayType, setDisplayType] = useState('Party')
+  const [displayMove, setDisplayMove] = useState<Move | null>(null);
   const [displayArea, setDisplayArea] = useState<DisplayContent | null>(null);
 
   const activePlayerPokemon = playerRoster.get(
@@ -32,11 +33,13 @@ const infoPage = () => {
 
   function handleMoveOnClick(selectedMove: Move) {
     // setDisplayType('Move')
+    setDisplayMove(selectedMove);
   }
 
   function handlePartyOnClick(item: string) {
     // setDisplayType('Party')
     setActivePlayerRosterIdentifier(item);
+    setDisplayMove(null);
   }
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -76,7 +79,27 @@ const infoPage = () => {
               <Text>Speed: {activePlayerPokemon?.stats.sp}</Text>
             </View>
             <View className="flex-1 bg-blue-600 w-fit h-fit m-2">
-              <Text>Hi</Text>
+              {displayMove !== null && (
+                <View>
+                  <Text>{displayMove.name}</Text>
+                  <View className="flex flex-row">
+                    <Text
+                      className={`bg-${displayMove.type} w-20 flex justify-center text-white`}
+                    >
+                      {displayMove.type}
+                    </Text>
+                    <Text className="bg-gray-500 w-20 flex justify-center mx-4 text-white">
+                      {displayMove.damageCategory}
+                    </Text>
+                  </View>
+                  <View className="flex flex-row">
+                    <Text className="w-20">Power: {displayMove.power}</Text>
+                    <Text className="mx-2">
+                      Accuracy: {displayMove.accuracy * 100}%
+                    </Text>
+                  </View>
+                </View>
+              )}
             </View>
           </View>
           <View className="flex flex-row bg-yellow-600 justify-center">
