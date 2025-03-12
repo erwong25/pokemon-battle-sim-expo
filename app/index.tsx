@@ -102,6 +102,17 @@ export default function App() {
             handlePress={
               () =>
                 router.push({
+                  pathname: "/battle",
+                  params: { user: "john_doe", age: 30 },
+                })
+              // () => router.push("/battle/" + roster.join(","));
+            }
+          />
+          <StandardButton
+            title="Test"
+            handlePress={
+              () =>
+                router.push({
                   pathname: "/test",
                   params: { user: "john_doe", age: 30 },
                 })
