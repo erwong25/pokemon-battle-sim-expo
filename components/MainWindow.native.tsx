@@ -20,7 +20,7 @@ const MainWindow = ({
 }) => {
   if (isMobile()) {
     return (
-      <View className="bg-white relative flex flex-row justify-center w-[300px] h-[300px]">
+      <View className="bg-white relative flex flex-row justify-center w-[350px] h-[300px]">
         <View className="bg-orange-600 flex justify-center absolute left-2 top-10">
           <View className="flex flex-row w-[140px]">
             <Text className="flex">{activePlayerPokemon.name}</Text>

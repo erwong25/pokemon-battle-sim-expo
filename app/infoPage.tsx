@@ -16,7 +16,7 @@ import { DisplayContent } from "@/components/generateDisplayArea";
 import calculateMaxHP from "@/lib/calculateMaxHP";
 
 const infoPage = () => {
-  const rawRoster = ["BULBASAUR", "IVYSAUR"];
+  const rawRoster = ["BULBASAUR", "IVYSAUR", "MOLTRES", "MEWTWO"];
   const roster = rawRoster.filter((pokemon) =>
     Object.keys(POKEMONS).includes(pokemon)
   ) as Array<keyof POKEMON_LIST>;
@@ -54,21 +54,25 @@ const infoPage = () => {
             <View className="flex-1 bg-red-600 w-fit h-fit m-2">
               <Image
                 source={activePlayerPokemon?.staticSprite}
-                style={{ width: 130, height: 84 }}
+                style={{ width: 130, height: 100 }}
                 alt=""
               />
               <Text>{activePlayerPokemon?.name}</Text>
               <View className="flex flex-row">
-                <Text
-                  className={`bg-${activePlayerPokemon?.types[0]} w-20 flex justify-center text-white`}
+                <View
+                  className={`bg-${activePlayerPokemon?.types[0]} flex flex-row w-20 justify-center`}
                 >
-                  {activePlayerPokemon?.types[0]}
-                </Text>
-                <Text
-                  className={`bg-${activePlayerPokemon?.types[1]} w-20 mx-4 flex justify-center text-white`}
+                  <Text className="text-white">
+                    {activePlayerPokemon?.types[0]}
+                  </Text>
+                </View>
+                <View
+                  className={`bg-${activePlayerPokemon?.types[1]} w-20 mx-4 flex flex-row justify-center`}
                 >
-                  {activePlayerPokemon?.types[1]}
-                </Text>
+                  <Text className="text-white">
+                    {activePlayerPokemon?.types[1]}
+                  </Text>
+                </View>
               </View>
               <Text>Stats:</Text>
               <Text>HP: {calculateMaxHP(activePlayerPokemon)}</Text>

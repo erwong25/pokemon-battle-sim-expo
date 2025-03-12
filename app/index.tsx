@@ -99,10 +99,14 @@ export default function App() {
           </Link>
           <StandardButton
             title="Start Battle"
-            handlePress={() => {
-              () => router.push("/battle/");
+            handlePress={
+              () =>
+                router.push({
+                  pathname: "/test",
+                  params: { user: "john_doe", age: 30 },
+                })
               // () => router.push("/battle/" + roster.join(","));
-            }}
+            }
           />
           {roster.length == 0 ? (
             <Text>Choose your starting pokemon</Text>
