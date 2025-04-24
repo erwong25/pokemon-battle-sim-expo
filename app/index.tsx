@@ -124,26 +124,28 @@ export default function App() {
           ) : roster.length < 6 ? (
             <Text>Choose your next pokemon</Text>
           ) : null}
-          {roster.length < 6 &&
-            pokemonList
-              .filter((pokemon) => !roster.includes(pokemon))
-              .map((item) => (
-                <View key={item}>
-                  <Image
-                    source={POKEMONS[item].staticSprite}
-                    style={{ width: 130, height: 84 }}
-                    contentFit="contain"
-                  />
+          <View className="flex flex-row flex-wrap bg-green-600 justify-center">
+            {roster.length < 6 &&
+              pokemonList
+                .filter((pokemon) => !roster.includes(pokemon))
+                .map((item) => (
+                  <View key={item} className="m-1">
+                    <Image
+                      source={POKEMONS[item].staticSprite}
+                      style={{ width: 130, height: 84 }}
+                      contentFit="contain"
+                    />
 
-                  <StandardButton
-                    title={POKEMONS[item].name}
-                    handlePress={() => {
-                      setRoster([...roster, item]);
-                    }}
-                    textStyles={"text-black text-lg text-center"}
-                  />
-                </View>
-              ))}
+                    <StandardButton
+                      title={POKEMONS[item].name}
+                      handlePress={() => {
+                        setRoster([...roster, item]);
+                      }}
+                      textStyles={"text-black text-lg text-center"}
+                    />
+                  </View>
+                ))}
+          </View>
         </ScrollView>
       </SafeAreaView>
     </GestureHandlerRootView>
