@@ -1,4 +1,11 @@
-import { Pressable, SafeAreaView, Text, View, Platform } from "react-native";
+import {
+  Pressable,
+  SafeAreaView,
+  Text,
+  View,
+  Platform,
+  StatusBar,
+} from "react-native";
 import {
   BULBASAUR,
   GENGAR,
@@ -34,7 +41,7 @@ export default function BattlePage({
   searchParams: { roster: string };
 }) {
   // const rawRoster = searchParams.roster.split(",");
-  const rawRoster = ["BULBASAUR", "IVYSAUR"];
+  const rawRoster = ["BULBASAUR", "IVYSAUR", "VENUSAUR"];
   const roster = rawRoster.filter((pokemon) =>
     Object.keys(POKEMONS).includes(pokemon)
   ) as Array<keyof POKEMON_LIST>;

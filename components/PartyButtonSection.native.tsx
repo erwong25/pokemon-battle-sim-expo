@@ -16,12 +16,12 @@ const PartyButtonSection = ({
     placeholderParty.push(
       <View
         key={`placeholderParty${i}`}
-        className="bg-gray-600 flex h-20 rounded-md rounded-tl-3xl w-[180px] mx-auto my-1"
+        className="bg-gray-600 flex h-20 rounded-md rounded-tl-3xl w-[180px] my-1"
       ></View>
     );
   }
   return (
-    <View className="bg-orange-600 w-[400px] flex flex-row flex-wrap justify-center my-2 mx-auto">
+    <View className="bg-orange-600 w-[400px] flex flex-row flex-wrap justify-evenly my-2 mx-auto">
       {Array.from(playerRosterHP.keys()).map((item) => {
         const partyPokemon = playerRosterHP.get(item);
         if (partyPokemon == null) {
