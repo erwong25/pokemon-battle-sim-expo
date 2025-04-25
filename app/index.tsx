@@ -55,7 +55,7 @@ export default function App() {
                   id={item}
                   className="flex flex-row w-[360px] bg-green-600 h-28 rounded-md rounded-tl-3xl"
                 >
-                  <View className="bg-white flex items-center justify-center place-content-center w-[160px]">
+                  <View className="flex items-center justify-center place-content-center w-[160px]">
                     <Image
                       source={animatedSprite}
                       style={{
@@ -70,14 +70,23 @@ export default function App() {
                       contentFit="contain"
                     />
                   </View>
-                  <View className="bg-blue-600 w-[220px] content-center">
-                    <View className="bg-yellow-600 flex grow">
+                  <View className="bg-blue-600 w-[220px] content-center pr-4">
+                    <View className="bg-yellow-600 flex justify-end grow px-4">
                       <Text>{POKEMONS[item].name}</Text>
                     </View>
-                    <View className="flex grow content-center">
-                      <Text>HP Bar</Text>
+                    <View className="w-fit bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mx-2">
+                      <View
+                        style={{
+                          width: `${
+                            (calculateMaxHP(POKEMONS[item]) /
+                              calculateMaxHP(POKEMONS[item])) *
+                            100
+                          }%`,
+                        }}
+                        className={`bg-orange-600 h-2.5 rounded-full`}
+                      ></View>
                     </View>
-                    <View className="bg-purple-600 flex grow text-center">
+                    <View className="bg-purple-600 flex flex-row justify-end grow text-center px-4">
                       <Text>HP: {calculateMaxHP(POKEMONS[item])}</Text>
                     </View>
                   </View>
@@ -141,7 +150,7 @@ export default function App() {
                       handlePress={() => {
                         setRoster([...roster, item]);
                       }}
-                      textStyles={"text-black text-lg text-center"}
+                      textStyles={""}
                     />
                   </View>
                 ))}

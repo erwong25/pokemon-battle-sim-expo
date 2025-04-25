@@ -9,34 +9,42 @@ export default function combatText(
   let faintText = null;
   if (combatContent.fainting == "player") {
     faintText = (
-      <Text>
+      <Text className="text-base">
         {combatContent.defender.name} fainted. Send out your next pokemon.{" "}
       </Text>
     );
   }
   if (combatContent.fainting == "opponent") {
     faintText = (
-      <Text>
+      <Text className="text-base">
         {combatContent.defender.name} fainted. Opponent switched to{" "}
         {combatContent.opponentFaintSwitch}.
       </Text>
     );
   }
   if (combatContent.outcome === "Switching") {
-    return <Text>Switching to {combatContent.attacker.name}.</Text>;
+    return (
+      <Text className="text-base">
+        Switching to {combatContent.attacker.name}.
+      </Text>
+    );
   }
   if (combatContent.outcome === "Fainted") {
-    return <Text>You sent out {combatContent.attacker.name}!</Text>;
+    return (
+      <Text className="text-base">
+        You sent out {combatContent.attacker.name}!
+      </Text>
+    );
   }
   if (combatContent.outcome === "Miss") {
     return (
-      <Text>
+      <Text className="text-base">
         {combatContent.attacker.name} used {combatContent.move}...but it missed.
       </Text>
     );
   } else if (combatContent.outcome === "No effect") {
     return (
-      <Text>
+      <Text className="text-base">
         {combatContent.attacker.name} used {combatContent.move}! It had no
         effect.
       </Text>
@@ -44,7 +52,7 @@ export default function combatText(
   } else {
     return (
       <View>
-        <Text>
+        <Text className="text-base">
           {combatContent.attacker.name} used {combatContent.move}!{" "}
           {combatContent.defender.name} took {combatContent.outcome} damage.
         </Text>

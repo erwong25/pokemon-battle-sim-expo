@@ -350,23 +350,6 @@ export default function BattlePage({
       <SafeAreaView className="bg-white h-full">
         <ScrollView>
           <View className="flex flex-row bg-green-600 justify-center h-auto">
-            <Pressable className="flex justify-end absolute right-0">
-              <Link
-                className="bg-gray-300 hover:bg-gray-500 text-gray-800 px-1 border border-gray-400 rounded shadow"
-                href={"/"}
-              >
-                <Text>Reset</Text>
-              </Link>
-            </Pressable>
-            <Pressable className="flex justify-end absolute left-0">
-              <Link
-                className="bg-gray-300 hover:bg-gray-500 text-gray-800 px-1 border border-gray-400 rounded shadow"
-                href={"/infoPage"}
-                // playerRosterHP={playerRoster}
-              >
-                <Text>Info</Text>
-              </Link>
-            </Pressable>
             <MainWindow
               theActivePlayerHP={theActivePlayerHP}
               theActiveOpponentHP={theActiveOpponentHP}
@@ -377,6 +360,23 @@ export default function BattlePage({
           </View>
           <View className="flex flex-row bg-yellow-600 justify-center">
             <View className="bg-pink-600 w-[650px] mr-1">
+              <Pressable className="flex justify-end absolute right-0">
+                <Link
+                  className="bg-gray-300 hover:bg-gray-500 text-gray-800 px-1 border border-gray-400 rounded shadow"
+                  href={"/"}
+                >
+                  <Text>Reset</Text>
+                </Link>
+              </Pressable>
+              <Pressable className="flex justify-end absolute left-0">
+                <Link
+                  className="bg-gray-300 hover:bg-gray-500 text-gray-800 px-1 border border-gray-400 rounded shadow"
+                  href={"/infoPage"}
+                  // playerRosterHP={playerRoster}
+                >
+                  <Text>Info</Text>
+                </Link>
+              </Pressable>
               <Text className="absolute">Select Move:</Text>
               <MoveButtonSection
                 activePokemon={playerRoster.get(activePlayerRosterIdentifier)}

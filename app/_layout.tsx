@@ -2,6 +2,7 @@ import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
+  useTheme,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Slot, Stack } from "expo-router";
@@ -37,18 +38,25 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <SafeAreaProvider
-        style={{
-          paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-          backgroundColor: useThemeColor({}, "background"),
-        }}
-      >
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-        <ExpoStatusBar style="auto" />
-      </SafeAreaProvider>
+      <Content />
     </ThemeProvider>
+  );
+}
+
+function Content() {
+  const { colors } = useTheme();
+  return (
+    <SafeAreaProvider
+      style={{
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        backgroundColor: colors.background,
+      }}
+    >
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="+not-found" />
+      </Stack>
+      <ExpoStatusBar style="auto" />
+    </SafeAreaProvider>
   );
 }

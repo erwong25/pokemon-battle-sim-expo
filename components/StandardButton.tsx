@@ -18,12 +18,14 @@ const StandardButton = ({
     <TouchableOpacity
       onPress={handlePress}
       activeOpacity={0.7}
-      className={`flex bg-gray-500 h-10 w-32 place-content-center items-center rounded-xl ${containerStyles} ${
+      className={`flex bg-gray-500 h-10 w-32 justify-center rounded-xl ${containerStyles} ${
         isLoading ? "opacity-50" : ""
       } `}
       disabled={isLoading}
     >
-      <Text className={`${textStyles}`}>{title}</Text>
+      <Text className={`text-black text-lg text-center ${textStyles}`}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };

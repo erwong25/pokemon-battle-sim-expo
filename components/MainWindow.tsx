@@ -22,7 +22,9 @@ const MainWindow = ({
     return (
       <View className="bg-white relative flex flex-row justify-center my-auto w-[800px] h-[400px]">
         <View className="bg-orange-600 justify-center">
-          <Text className="flex justify-start">{activePlayerPokemon.name}</Text>
+          <Text className="flex justify-start mx-2">
+            {activePlayerPokemon.name}
+          </Text>
           <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
             <View
               style={{
@@ -34,7 +36,7 @@ const MainWindow = ({
               className={`bg-green-600 h-2.5 rounded-full`}
             ></View>
           </View>
-          <Text className="flex justify-end">
+          <Text className="flex justify-end mx-2">
             {theActivePlayerHP}/{calculateMaxHP(activePlayerPokemon)}
           </Text>
         </View>
@@ -62,8 +64,11 @@ const MainWindow = ({
             contentFit="contain"
           />
         </View>
+        <View className="bg-purple-600 h-[100px] w-[500px] absolute bottom-0 p-4">
+          {textOption}
+        </View>
         <View className="bg-orange-600 justify-center">
-          <Text className="flex justify-start">
+          <Text className="flex justify-start mx-2">
             {activeOpponentPokemon.name}
           </Text>
           <View className="w-[140px] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
@@ -78,11 +83,10 @@ const MainWindow = ({
               className={`bg-green-600 h-2.5 rounded-full`}
             ></View>
           </View>
-          <Text className="flex justify-end">
+          <Text className="flex justify-end mx-2">
             {theActiveOpponentHP}/{calculateMaxHP(activeOpponentPokemon)}
           </Text>
         </View>
-        {textOption}
       </View>
     );
   }

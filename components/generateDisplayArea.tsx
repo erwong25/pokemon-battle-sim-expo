@@ -39,11 +39,11 @@ export default function generateDisplayArea(
         <Text>{displayArea.move.name}</Text>
         <View className="flex flex-row">
           <Text
-            className={`bg-${displayArea.move.type} w-20 flex justify-center text-white`}
+            className={`bg-${displayArea.move.type} w-20 flex justify-center text-white rounded-md`}
           >
             {displayArea.move.type}
           </Text>
-          <Text className="bg-gray-500 w-20 flex justify-center mx-4 text-white">
+          <Text className="bg-gray-500 w-20 flex justify-center mx-4 text-white rounded-md">
             {displayArea.move.damageCategory}
           </Text>
         </View>
@@ -61,12 +61,12 @@ export default function generateDisplayArea(
         <Text>{displayArea.rosterEntry.pokemon.name}</Text>
         <View className="flex flex-row">
           <Text
-            className={`bg-${displayArea.rosterEntry.pokemon.types[0]} w-20 flex justify-center text-white`}
+            className={`bg-${displayArea.rosterEntry.pokemon.types[0]} w-20 flex justify-center text-white rounded-md`}
           >
             {displayArea.rosterEntry.pokemon.types[0]}
           </Text>
           <Text
-            className={`bg-${displayArea.rosterEntry.pokemon.types[1]} w-20 mx-4 flex justify-center text-white`}
+            className={`bg-${displayArea.rosterEntry.pokemon.types[1]} w-20 mx-4 flex justify-center text-white rounded-md`}
           >
             {displayArea.rosterEntry.pokemon.types[1]}
           </Text>
