@@ -21,7 +21,7 @@ const PartyButton = ({
       key={`${pokemon}`}
       onHoverIn={() => onMouseOver(partyPokemon)}
       onPress={() => onClick(pokemon)}
-      // onLongPress= {() => { if(!isMobile()) {return}} onLongPress(pokemon)}
+      disabled={partyPokemonHP == 0}
       className="bg-blue-600 hover:bg-green-700 hover:shadow-xl transform hover:-translate-x-1 hover:-translate-y-1 hover:scale-[1.01] flex flex-row h-28 rounded-md rounded-tl-3xl w-[300px]"
     >
       <View className="bg-white flex items-center m-auto w-[100px]">
