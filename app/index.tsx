@@ -32,7 +32,7 @@ export default function App() {
         className="bg-white h-full"
       >
         <ScrollView>
-          <View className="bg-red-600 h-fit w-[800px] flex grid grid-cols-2 gap-4 p-4 mx-auto">
+          <View className="h-fit w-[800px] flex grid grid-cols-2 gap-4 p-4 mx-auto">
             {roster.map((item) => {
               const animatedSprite = POKEMONS[item].animatedSprite;
               const width =
@@ -53,7 +53,7 @@ export default function App() {
                 <View
                   key={`${item}`}
                   id={item}
-                  className="flex flex-row w-[360px] bg-green-600 h-28 rounded-md rounded-tl-3xl"
+                  className="flex flex-row w-[360px] bg-green-600 h-28 rounded-md rounded-tl-3xl border-8 border-solid border-green-400"
                 >
                   <View className="flex items-center justify-center place-content-center w-[160px]">
                     <Image
@@ -70,11 +70,11 @@ export default function App() {
                       contentFit="contain"
                     />
                   </View>
-                  <View className="bg-blue-600 w-[220px] content-center pr-4">
-                    <View className="bg-yellow-600 flex justify-end grow px-4">
+                  <View className="w-[210px] content-center pr-16">
+                    <View className="flex justify-end grow px-4">
                       <Text>{POKEMONS[item].name}</Text>
                     </View>
-                    <View className="w-fit bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mx-2">
+                    <View className="bg-gray-200 w[190px] rounded-full h-2.5 dark:bg-gray-700 mx-2">
                       <View
                         style={{
                           width: `${
@@ -83,10 +83,10 @@ export default function App() {
                             100
                           }%`,
                         }}
-                        className={`bg-orange-600 h-2.5 rounded-full`}
+                        className={`bg-orange-600 h-2.5 rounded-full border-2`}
                       ></View>
                     </View>
-                    <View className="bg-purple-600 flex flex-row justify-end grow text-center px-4">
+                    <View className="flex flex-row justify-end grow text-center px-4">
                       <Text>HP: {calculateMaxHP(POKEMONS[item])}</Text>
                     </View>
                   </View>
@@ -94,18 +94,7 @@ export default function App() {
               );
             })}
           </View>
-          <Link
-            href={{
-              pathname: "/battle/",
-              // pathname: "/battle/[id]",
-              // params: { id: roster.join(",") },
-            }}
-            className="bg-blue-600 w-[220px] h-[100px] flex justify-center"
-          >
-            <Pressable>
-              <Text>Start Battle</Text>
-            </Pressable>
-          </Link>
+
           <StandardButton
             title="Start Battle"
             handlePress={
@@ -117,7 +106,7 @@ export default function App() {
               // () => router.push("/battle/" + roster.join(","));
             }
           />
-          <StandardButton
+          {/* <StandardButton
             title="Test"
             handlePress={
               () =>
@@ -125,15 +114,14 @@ export default function App() {
                   pathname: "/test",
                   params: { user: "john_doe", age: 30 },
                 })
-              // () => router.push("/battle/" + roster.join(","));
             }
-          />
+          /> */}
           {roster.length == 0 ? (
             <Text>Choose your starting pokemon</Text>
           ) : roster.length < 6 ? (
             <Text>Choose your next pokemon</Text>
           ) : null}
-          <View className="flex flex-row flex-wrap bg-green-600 justify-center">
+          <View className="flex flex-row flex-wrap justify-center">
             {roster.length < 6 &&
               pokemonList
                 .filter((pokemon) => !roster.includes(pokemon))

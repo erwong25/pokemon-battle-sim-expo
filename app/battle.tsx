@@ -347,9 +347,9 @@ export default function BattlePage({
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaView className="bg-white h-full">
+      <SafeAreaView className="bg-white h-full pt-4">
         <ScrollView>
-          <View className="flex flex-row bg-green-600 justify-center h-auto">
+          <View className="flex flex-row justify-center h-auto">
             <MainWindow
               theActivePlayerHP={theActivePlayerHP}
               theActiveOpponentHP={theActiveOpponentHP}
@@ -358,8 +358,8 @@ export default function BattlePage({
               textOption={textOption}
             />
           </View>
-          <View className="flex flex-row bg-yellow-600 justify-center">
-            <View className="bg-pink-600 w-[650px] mr-1">
+          <View className="flex flex-row justify-center">
+            <View className="bg-gray-200 w-[650px] m-2 mr-3 p-2 rounded-xl">
               <Pressable className="flex justify-end absolute right-0">
                 <Link
                   className="bg-gray-300 hover:bg-gray-500 text-gray-800 px-1 border border-gray-400 rounded shadow"
@@ -368,7 +368,7 @@ export default function BattlePage({
                   <Text>Reset</Text>
                 </Link>
               </Pressable>
-              <Pressable className="flex justify-end absolute left-0">
+              <Pressable className="flex justify-end absolute right-0 top-8">
                 <Link
                   className="bg-gray-300 hover:bg-gray-500 text-gray-800 px-1 border border-gray-400 rounded shadow"
                   href={"/infoPage"}

@@ -20,8 +20,8 @@ const MainWindow = ({
 }) => {
   if (Platform.OS === "web") {
     return (
-      <View className="bg-white relative flex flex-row justify-center my-auto w-[800px] h-[400px]">
-        <View className="bg-orange-600 justify-center">
+      <View className="bg-gray-200 relative flex flex-row justify-center my-auto w-[820px] h-[400px] px-8 rounded-xl">
+        <View className="justify-center">
           <Text className="flex justify-start mx-2">
             {activePlayerPokemon.name}
           </Text>
@@ -33,14 +33,14 @@ const MainWindow = ({
                   100
                 }%`,
               }}
-              className={`bg-green-600 h-2.5 rounded-full`}
+              className={`bg-green-600 h-2.5 rounded-full border-2 border-gray-700`}
             ></View>
           </View>
           <Text className="flex justify-end mx-2">
             {theActivePlayerHP}/{calculateMaxHP(activePlayerPokemon)}
           </Text>
         </View>
-        <View className="bg-red-600 scale-x-[-2] scale-y-[2] m-auto">
+        <View className="scale-x-[-2] scale-y-[2] m-auto">
           <Image
             className=""
             style={{
@@ -52,7 +52,7 @@ const MainWindow = ({
             contentFit="contain"
           />
         </View>
-        <View className="bg-blue-600 m-auto scale-[2]">
+        <View className="m-auto scale-[2]">
           <Image
             className=""
             style={{
@@ -64,10 +64,10 @@ const MainWindow = ({
             contentFit="contain"
           />
         </View>
-        <View className="bg-purple-600 h-[100px] w-[500px] absolute bottom-0 p-4">
+        <View className="bg-gray-400 h-[100px] w-[500px] absolute bottom-0 p-4 rounded-xl mb-2">
           {textOption}
         </View>
-        <View className="bg-orange-600 justify-center">
+        <View className="justify-center">
           <Text className="flex justify-start mx-2">
             {activeOpponentPokemon.name}
           </Text>
@@ -80,7 +80,7 @@ const MainWindow = ({
                   100
                 }%`,
               }}
-              className={`bg-green-600 h-2.5 rounded-full`}
+              className={`bg-green-600 h-2.5 rounded-full border-2 border-gray-700`}
             ></View>
           </View>
           <Text className="flex justify-end mx-2">

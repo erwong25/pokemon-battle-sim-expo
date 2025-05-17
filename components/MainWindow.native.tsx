@@ -22,7 +22,7 @@ const MainWindow = ({
     return (
       <View className="bg-white relative flex flex-row justify-center w-[350px] h-[300px]">
         <View>{textOption}</View>
-        <View className="bg-orange-600 flex justify-center absolute left-2 top-10">
+        <View className="flex justify-center absolute left-2 top-10">
           <View className="flex flex-row w-[140px]">
             <Text className="flex">{activePlayerPokemon.name}</Text>
             <Text className="flex ml-auto">
@@ -65,7 +65,7 @@ const MainWindow = ({
             </View>
           </View>
         </View>
-        <View className="bg-red-600 scale-x-[-2] scale-y-[2] m-auto">
+        <View className="scale-x-[-2] scale-y-[2] m-auto">
           <Image
             className=""
             style={{
@@ -83,7 +83,7 @@ const MainWindow = ({
             contentFit="contain"
           />
         </View>
-        <View className="bg-blue-600 m-auto scale-[2]">
+        <View className="m-auto scale-[2]">
           <Image
             className=""
             style={{

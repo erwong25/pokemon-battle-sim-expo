@@ -21,7 +21,7 @@ const PartyButtonSection = ({
     );
   }
   return (
-    <View className="bg-red-600 w-fit flex grid grid-cols-2 gap-4 p-4 pt-0 mx-auto">
+    <View className="w-fit flex grid grid-cols-2 gap-4 p-4 pt-0 mx-auto mt-2">
       {Array.from(playerRosterHP.keys()).map((item) => {
         const partyPokemon = playerRosterHP.get(item);
         if (partyPokemon == null) {

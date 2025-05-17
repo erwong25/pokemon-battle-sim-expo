@@ -19,7 +19,7 @@ export default function generateCombatText(
   const combatInfo2 = combatInfo.get(2);
   // console.log(combatInfo);
   return (
-    <View className="bg-red-600 absolute text-black bottom-0 h-[5rem] w-fit">
+    <View className="absolute text-black bottom-0 h-[5rem] w-fit">
       {combatInfo1 != undefined && combatText(combatInfo1)}
       {combatInfo2 != undefined && combatText(combatInfo2)}
     </View>
