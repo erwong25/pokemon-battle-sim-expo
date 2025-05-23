@@ -116,7 +116,7 @@ export default function BattlePage({
 
   function handlePartyOnClick(item: string) {
     const switchTarget = playerRoster.get(item)?.pokemon;
-    if (switchTarget == undefined) {
+    if (switchTarget == undefined || switchTarget == activePlayerPokemon) {
       return;
     }
     if (playerRoster.get(activePlayerRosterIdentifier)?.currentHP == 0) {
@@ -347,9 +347,9 @@ export default function BattlePage({
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaView className="bg-white h-full pt-4">
+      <SafeAreaView className="bg-white h-full">
         <ScrollView>
-          <View className="flex flex-row justify-center h-auto">
+          <View className="flex flex-row justify-center h-auto mt-4 mb-2">
             <MainWindow
               theActivePlayerHP={theActivePlayerHP}
               theActiveOpponentHP={theActiveOpponentHP}
@@ -359,7 +359,7 @@ export default function BattlePage({
             />
           </View>
           <View className="flex flex-row justify-center">
-            <View className="bg-gray-200 w-[650px] m-2 mr-3 p-2 rounded-xl">
+            <View className="bg-gray-200 w-[750px] m-2 mr-3 p-2 rounded-xl">
               <Pressable className="flex justify-end absolute right-0">
                 <Link
                   className="bg-gray-300 hover:bg-gray-500 text-gray-800 px-1 border border-gray-400 rounded shadow"

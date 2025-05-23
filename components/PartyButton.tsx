@@ -22,12 +22,12 @@ const PartyButton = ({
       onHoverIn={() => onMouseOver(partyPokemon)}
       onPress={() => onClick(pokemon)}
       disabled={partyPokemonHP == 0}
-      className="bg-green-600 border-8 border-solid border-green-400 p-2 hover:bg-green-700 hover:shadow-xl transform hover:-translate-x-1 hover:-translate-y-1 hover:scale-[1.01] flex flex-row h-28 rounded-md rounded-tl-3xl w-[300px]"
+      className="bg-green-600 border-8 border-solid border-green-400 p-2 hover:bg-green-700 hover:shadow-xl transform hover:-translate-x-1 hover:-translate-y-1 hover:scale-[1.01] flex flex-row h-32 rounded-md rounded-tl-3xl w-[320px]"
     >
       <View className="flex items-center m-auto w-[100px]">
         <Image
           source={partyPokemon.pokemon.staticSprite}
-          style={{ width: 130, height: 84 }}
+          style={{ width: 130, height: 100 }}
           alt=""
         />
       </View>

@@ -16,7 +16,7 @@ const PartyButtonSection = ({
     placeholderParty.push(
       <View
         key={`placeholderParty${i}`}
-        className="bg-gray-600 flex h-28 rounded-md rounded-tl-3xl w-[300px]"
+        className="bg-gray-600 flex h-32 rounded-md rounded-tl-3xl w-[320px]"
       ></View>
     );
   }
