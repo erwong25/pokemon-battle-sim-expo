@@ -1,4 +1,4 @@
-import type { RosterEntry } from "@/components/generatePlayerRoster";
+import type { RosterEntry } from "@/components/battleUI/generatePlayerRoster";
 
 export default function randomTeamMember(
   roster: Map<string, RosterEntry>

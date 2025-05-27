@@ -14,26 +14,26 @@ import {
   Pokemon,
 } from "@/constants/pokemon";
 import { useEffect, useState } from "react";
-import { RosterEntry } from "@/components/generatePlayerRoster";
-import generatePlayerRoster from "@/components/generatePlayerRoster";
+import { RosterEntry } from "@/components/battleUI/generatePlayerRoster";
+import generatePlayerRoster from "@/components/battleUI/generatePlayerRoster";
 import { CombatOutcome } from "@/lib/damageCalculations";
-import { DisplayContent } from "@/components/generateDisplayArea";
-import { combatContent } from "@/components/generateCombatText";
+import { DisplayContent } from "@/components/battleUI/generateDisplayArea";
+import { combatContent } from "@/components/battleUI/generateCombatText";
 import { Move } from "@/constants/moves";
 import computeDamage from "@/lib/damageCalculations";
 import randomTeamMember from "@/lib/randomTeamMember";
 import moveSelector from "@/lib/moveSelector";
-import generateCombatText from "@/components/generateCombatText";
-import generateVictoryText from "@/components/generateVictoryText";
-import generateDisplayArea from "@/components/generateDisplayArea";
-import MainWindow from "@/components/MainWindow";
+import generateCombatText from "@/components/battleUI/generateCombatText";
+import generateVictoryText from "@/components/battleUI/generateVictoryText";
+import generateDisplayArea from "@/components/battleUI/generateDisplayArea";
+import MainWindow from "@/components/battleUI/MainWindow";
 import { Link } from "expo-router";
 import {
   GestureHandlerRootView,
   ScrollView,
 } from "react-native-gesture-handler";
-import MoveButtonSection from "@/components/MoveButtonSection";
-import PartyButtonSection from "@/components/PartyButtonSection";
+import MoveButtonSection from "@/components/battleUI/MoveButtonSection";
+import PartyButtonSection from "@/components/battleUI/PartyButtonSection";
 
 export default function BattlePage({
   searchParams,

@@ -7,13 +7,13 @@ import {
   ScrollView,
 } from "react-native-gesture-handler";
 
-import MoveButtonSection from "@/components/MoveButtonSection";
-import PartyButtonSection from "@/components/PartyButtonSection";
-import generatePlayerRoster from "@/components/generatePlayerRoster";
+import MoveButtonSection from "@/components/battleUI/MoveButtonSection";
+import PartyButtonSection from "@/components/battleUI/PartyButtonSection";
+import generatePlayerRoster from "@/components/battleUI/generatePlayerRoster";
 import { MEWTWO, POKEMONS, POKEMON_LIST } from "@/constants/pokemon";
-import { RosterEntry } from "@/components/generatePlayerRoster";
+import { RosterEntry } from "@/components/battleUI/generatePlayerRoster";
 import { Move } from "@/constants/moves";
-import { DisplayContent } from "@/components/generateDisplayArea";
+import { DisplayContent } from "@/components/battleUI/generateDisplayArea";
 import calculateMaxHP from "@/lib/calculateMaxHP";
 
 const infoPage = () => {
