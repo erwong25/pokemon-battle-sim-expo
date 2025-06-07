@@ -27,7 +27,7 @@ import generateCombatText from "@/components/battleUI/generateCombatText";
 import generateVictoryText from "@/components/battleUI/generateVictoryText";
 import generateDisplayArea from "@/components/battleUI/generateDisplayArea";
 import MainWindow from "@/components/battleUI/MainWindow";
-import { Link } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import {
   GestureHandlerRootView,
   ScrollView,
@@ -40,6 +40,25 @@ export default function BattlePage({
 }: {
   searchParams: { roster: string };
 }) {
+  const { colors } = useLocalSearchParams();
+
+  // colors will be:
+  // - an array: ['red', 'blue', 'green'] if multiple
+  // - a string: 'red' if only one value
+  // - undefined if not passed
+
+  const colorsArray = Array.isArray(colors) ? colors : colors ? [colors] : [];
+
+  console.log(colorsArray); // ['red', 'blue', 'green']
+
+  // const { testRoster } = useLocalSearchParams();
+  // const rosterArray = Array.isArray(testRoster)
+  //   ? testRoster
+  //   : testRoster
+  //   ? [testRoster]
+  //   : [];
+  // console.log(rosterArray);
+
   // const rawRoster = searchParams.roster.split(",");
   const rawRoster = ["BULBASAUR", "IVYSAUR", "VENUSAUR"];
   const roster = rawRoster.filter((pokemon) =>

@@ -37,7 +37,7 @@ export default function App() {
               () =>
                 router.push({
                   pathname: "/battle",
-                  params: { user: "john_doe", age: 30 },
+                  params: { colors: ["red", "blue", "green"] },
                 })
               // () => router.push("/battle/" + roster.join(","));
             }
