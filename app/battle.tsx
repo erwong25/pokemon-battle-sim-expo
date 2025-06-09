@@ -42,14 +42,7 @@ export default function BattlePage({
 }) {
   const { colors } = useLocalSearchParams();
 
-  // colors will be:
-  // - an array: ['red', 'blue', 'green'] if multiple
-  // - a string: 'red' if only one value
-  // - undefined if not passed
-
-  const colorsArray = Array.isArray(colors) ? colors : colors ? [colors] : [];
-
-  console.log(colorsArray); // ['red', 'blue', 'green']
+  console.log(colors.toString().split(",")); // ['red', 'blue', 'green']
 
   // const { testRoster } = useLocalSearchParams();
   // const rosterArray = Array.isArray(testRoster)
